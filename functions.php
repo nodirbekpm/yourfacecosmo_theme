@@ -60,6 +60,19 @@ require get_template_directory() . '/inc/custom-post-types.php';
 
 
 /**
+ * archive-discounts.php acf ishlatishi uchun
+ */
+if (function_exists('acf_add_options_page')) {
+    acf_add_options_page(array(
+        'page_title' => 'Настройки архива скидок',
+        'menu_title' => 'Настройки скидок',
+        'menu_slug' => 'discounts-archive-settings',
+        'capability' => 'edit_posts',
+        'redirect' => false
+    ));
+}
+
+/**
  * ACF faylini ulash
  */
 //require get_template_directory() . '/inc/acf-fields.php';

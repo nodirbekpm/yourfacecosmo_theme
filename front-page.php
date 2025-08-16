@@ -223,7 +223,7 @@ get_header();
                 </div>
             </div>
         </section>
-        <section class="service">
+        <section id="service" class="service">
             <div class="container">
                 <h2 class="sectitle wow fadeInUp">Наши услуги</h2>
                 <p class="desc service-desc wow fadeInUp" data-wow-delay="0.2s">Основные направления деятельности</p>
