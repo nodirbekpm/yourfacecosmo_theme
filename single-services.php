@@ -13,11 +13,30 @@ $banner_hidden = get_field('banner_hidden');
 $background_img = get_field('background_img');
 $short_description = get_field('short_description');
 
+// Offers
+$offers_hidden = get_field('offers_hidden');
+$offers_title = get_field('offers_title');
+$offers_images = get_field('offers_images');
+$offers = get_field('offers');
+$register_yclients = get_field('register_yclients');
+
+// About procedure
+$about_procedure_hidden = get_field('about_procedure_hidden');
+$about_procedure_texts = get_field('about_procedure_texts');
+$about_procedure_images = get_field('about_procedure_images');
+
 //Procedure
 $procedure_hidden = get_field('procedure_hidden');
 $procedure_title = get_field('procedure_title');
 $procedure_image = get_field('procedure_image');
 $procedure = get_field('procedure');
+
+// Sollutions
+$sollutions_hidden = get_field('sollutions_hidden');
+$sollutions_title = get_field('sollutions_title');
+$sollutions_text = get_field('sollutions_text');
+$sollutions = get_field('sollutions');
+$sollutions_images = get_field('sollutions_images');
 
 //Reasons
 $reasons_hidden = get_field('reasons_hidden');
@@ -27,14 +46,24 @@ $reasons = get_field('reasons');
 // Methods
 $methods_hidden = get_field('methods_hidden');
 $methods_title = get_field('methods_title');
+$methods_text = get_field('methods_text');
+$methods_main_title = get_field('methods_main_title');
 $methods_image = get_field('methods_image');
 $methods = get_field('methods');
 
 // Stages
 $stages_hidden = get_field('stages_hidden');
 $stages_title = get_field('stages_title');
+$stages_subtitle = get_field('stages_subtitle');
+$stages_text = get_field('stages_text');
 $stages_image = get_field('stages_image');
 $stages = get_field('stages');
+
+//Indications and contraindications
+$contraindications_hidden = get_field('contraindications_hidden');
+$indications = get_field('indications');
+$contraindications = get_field('contraindications');
+$contraindications_text = get_field('contraindications_text');
 
 // Results
 $results_hidden = get_field('results_hidden');
@@ -50,6 +79,12 @@ $questions_answers_hidden = get_field('questions_answers_hidden');
 $questions_answers_title = get_field('questions_answers_title');
 $questions_answers_text = get_field('questions_answers_text');
 $questions_answers = get_field('questions_answers');
+
+// Facts
+$facts_hidden = get_field('facts_hidden');
+$facts_title = get_field('facts_title');
+$facts_text = get_field('facts_text');
+$facts = get_field('facts');
 ?>
 
 <?php if ($banner_hidden !== "Да"): ?>
@@ -95,6 +130,25 @@ $questions_answers = get_field('questions_answers');
                         </div>
                         <p class="desc wow fadeInUp"><?php echo esc_html($description); ?></p>
 
+                        <?php if ($offers_hidden !== "Да"): ?>
+                            <p><?php echo esc_html($offers_title); ?></p>
+                            <ul class="custom-list duble">
+                                <?php foreach ($offers as $pr): ?>
+                                    <li class="wow fadeInUp"><p class="desc"><?php echo esc_html($pr['offer']); ?></p>
+                                    </li>
+                                <?php endforeach; ?>
+
+                            </ul>
+                            <a href="<?php echo esc_url($register_yclients['url']) ?>" class="call-form__link">
+                                Записаться на yclients.com
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13"
+                                     fill="none">
+                                    <path d="M0 5.6875H12.17L6.58 1.14562L8 0L16 6.5L8 13L6.59 11.8544L12.17 7.3125H0V5.6875Z"
+                                          fill="#FFF"></path>
+                                </svg>
+                            </a>
+                        <?php endif; ?>
+
                         <?php if ($procedure_hidden !== "Да"): ?>
                             <h2 class="wow fadeInUp sectitle"><?php echo esc_html($procedure_title); ?></h2>
                             <ul class="custom-list">
@@ -115,6 +169,50 @@ $questions_answers = get_field('questions_answers');
                             </a>
                         <?php endif; ?>
                     </div>
+                    <?php if ($offers_hidden !== "Да"): ?>
+                        <?php if ($offers_images): ?>
+                            <?php if (count($offers_images) === 1): ?>
+                                <?php $image = $offers_images[0]['image']; ?>
+                                <div class="service-right mobile-none">
+                                    <img src="<?php echo esc_url($image['url']); ?>"
+                                         alt="<?php echo esc_attr($image['alt']); ?>">
+                                </div>
+                            <?php else: ?>
+                                <div class="service-right">
+                                    <div class="service-swiper swiper">
+                                        <div class="swiper-wrapper">
+                                            <?php foreach ($offers_images as $offers_image): ?>
+                                                <?php $image = $offers_image['image']; ?>
+                                                <a href="<?php echo esc_url($image['url']); ?>"
+                                                   class="swiper-slide"
+                                                   data-fancybox="offers-gallery"
+                                                   data-src="<?php echo esc_url($image['url']); ?>">
+                                                    <img src="<?php echo esc_url($image['url']); ?>"
+                                                         alt="<?php echo esc_attr($image['alt']); ?>">
+                                                </a>
+                                            <?php endforeach; ?>
+                                        </div>
+
+                                        <div class="swiper-pagination service-pagination"></div>
+                                        <div class="service-next">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="29"
+                                                 viewBox="0 0 17 29" fill="none">
+                                                <path d="M1.66048 2.01389L14.212 14.9158L1.31015 27.4673" stroke="white"
+                                                      stroke-width="3"/>
+                                            </svg>
+                                        </div>
+                                        <div class="service-prev">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="17" height="29"
+                                                 viewBox="0 0 17 29" fill="none">
+                                                <path d="M15.3395 26.9861L2.78796 14.0842L15.6898 1.53268"
+                                                      stroke="white" stroke-width="3"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                            <?php endif; ?>
+                        <?php endif; ?>
+                    <?php endif; ?>
                     <?php if ($procedure_hidden !== "Да"): ?>
                         <div class="service-right mobile-none">
                             <img src="<?php echo esc_url($procedure_image['url']); ?>"
@@ -122,6 +220,103 @@ $questions_answers = get_field('questions_answers');
                         </div>
                     <?php endif; ?>
                 </div>
+
+                <?php if ($about_procedure_hidden !== "Да"): ?>
+                    <div class="service-row">
+                        <div class="service-left">
+                            <h2 class="wow fadeInUp sectitle">О процедуре</h2>
+                            <div class="desc-row">
+                                <?php foreach ($about_procedure_texts as $text): ?>
+                                    <p class="desc wow fadeInUp"><?php echo esc_html($text['text']); ?></p>
+                                <?php endforeach; ?>
+                            </div>
+                        </div>
+                    </div>
+                    <?php if (!empty($about_procedure_images)): ?>
+                        <div class="service-photos">
+                            <div class="review-swiper swiper">
+                                <div class="swiper-wrapper">
+                                    <?php
+                                    $sec_id = 1;
+                                    foreach ($about_procedure_images as $image):
+                                        $delay = $sec_id * 0.1;
+                                        ?>
+                                        <div class="swiper-slide wow fadeInUp" data-wow-delay="<?php echo $delay; ?>s"
+                                             id="sec-<?php echo $sec_id; ?>">
+                                            <img src="<?php echo esc_url($image['image']['url']); ?>" alt="">
+                                        </div>
+                                        <?php
+                                        $sec_id++;
+                                    endforeach;
+                                    ?>
+
+
+                                </div>
+                                <div class="swiper-pagination review-gapination"></div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+
+                <?php endif; ?>
+
+                <?php if ($sollutions_hidden !== "Да"): ?>
+                    <div class="service-row">
+                        <div class="service-left">
+                            <?php if ($sollutions_title): ?>
+                                <h2 class="wow fadeInUp sectitle"><?php echo esc_html($sollutions_title); ?></h2>
+                            <?php endif; ?>
+
+                            <?php if ($sollutions_text): ?>
+                                <div class="caption wow fadeInUp"><?php echo esc_html($sollutions_text); ?></div>
+                            <?php endif; ?>
+
+                            <ul class="custom-list duble">
+                                <?php $i = 1; ?>
+                                <?php foreach ($sollutions as $sollution): ?>
+                                    <li class="wow fadeInUp">
+                                        <p class="desc"><?php echo esc_html($sollution['sollution']); ?></p>
+                                    </li>
+                                    <?php $i++; ?>
+                                <?php endforeach; ?>
+                            </ul>
+
+                            <a href="#" class="spec-btn wow fadeInLeft">
+                                Записаться
+                                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="12" viewBox="0 0 15 12"
+                                     fill="none">
+                                    <line x1="1.06066" y1="4.93934" x2="6.71751" y2="10.5962" stroke="white"
+                                          stroke-width="3"/>
+                                    <line x1="4.93934" y1="10.9393" x2="13.9393" y2="1.93934" stroke="white"
+                                          stroke-width="3"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <?php if (!empty($sollutions_images)): ?>
+                        <div class="service-photos">
+                            <div class="review-swiper swiper">
+                                <div class="swiper-wrapper">
+                                    <?php
+                                    $sec_id = 1;
+                                    foreach ($sollutions_images as $image):
+                                        $delay = $sec_id * 0.1;
+                                        ?>
+                                        <div class="swiper-slide wow fadeInUp" data-wow-delay="<?php echo $delay; ?>s"
+                                             id="sec-<?php echo $sec_id; ?>">
+                                            <img src="<?php echo esc_url($image['image']['url']); ?>" alt="">
+                                        </div>
+                                        <?php
+                                        $sec_id++;
+                                    endforeach;
+                                    ?>
+
+
+                                </div>
+                                <div class="swiper-pagination review-gapination"></div>
+                            </div>
+                        </div>
+                    <?php endif; ?>
+                <?php endif; ?>
 
                 <?php if ($reasons_hidden !== "Да"): ?>
                     <div class="service-row">
@@ -139,32 +334,52 @@ $questions_answers = get_field('questions_answers');
                 <?php endif; ?>
 
                 <?php if ($methods_hidden !== "Да"): ?>
-                    <div class="service-row">
-                        <div class="service-left">
-                            <div class="wow fadeInUp sectitle"><?php echo esc_html($methods_title); ?></div>
-                            <div class="steps-col">
-                                <?php foreach ($methods as $index => $method): ?>
-                                    <div class="step-item wow fadeInUp">
-                                        <div class="step-num"><?php echo esc_html($index + 1); ?></div>
-                                        <div>
-                                            <div class="step-title"><?php echo esc_html($method['title']); ?></div>
-                                            <?php echo apply_filters('the_content', $method['text']); ?>
-                                        </div>
-                                    </div>
-                                <?php endforeach; ?>
+                    <?php if (!empty($methods_title) || !empty($methods_text)): ?>
+                        <div class="service-row">
+                            <div class="service-left">
+                                <?php if (!empty($methods_title)): ?>
+                                    <div class="wow sectitle"><?php echo esc_html($methods_title); ?></div>
+                                <?php endif; ?>
+
+                                <?php if (!empty($methods_text)): ?>
+                                    <p class="desc"><?php echo esc_html($methods_text); ?></p>
+                                <?php endif; ?>
                             </div>
                         </div>
-                        <div class="service-right">
-                            <img src="<?php echo esc_url($methods_image['url']); ?>"
-                                 alt="<?php echo esc_attr($service_title); ?>">
+                    <?php endif; ?>
+
+                    <div class="service-row">
+                        <div class="service-left">
+                            <div class="wow fadeInUp sectitle"><?php echo esc_html($methods_main_title); ?></div>
+                            <?php if (!empty($methods)): ?>
+                                <div class="steps-col">
+                                    <?php foreach ($methods as $index => $method): ?>
+                                        <div class="step-item wow fadeInUp">
+                                            <div class="step-num"><?php echo esc_html($index + 1); ?></div>
+                                            <div>
+                                                <div class="step-title"><?php echo esc_html($method['title']); ?></div>
+                                                <?php echo apply_filters('the_content', $method['text']); ?>
+                                            </div>
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
+                            <?php endif; ?>
                         </div>
+                        <?php if (!empty($methods_image) && !empty($methods_image['url'])): ?>
+                            <div class="service-right">
+                                <img src="<?php echo esc_url($methods_image['url']); ?>"
+                                     alt="<?php echo esc_attr($service_title); ?>">
+                            </div>
+                        <?php endif; ?>
                     </div>
                 <?php endif; ?>
 
                 <?php if ($stages_hidden !== "Да"): ?>
                     <div class="service-row">
                         <div class="service-left">
-                            <div class="wow fadeInUp sectitle"><?php echo esc_html($service_title); ?></div>
+                            <div class="wow fadeInUp sectitle"><?php echo esc_html($stages_title); ?></div>
+                            <p class="desc wow fadeInUp"><?php echo esc_html($stages_text); ?></p>
+                            <div class="gallery-title"><?php echo esc_html($stages_subtitle); ?></div>
                             <div class="steps-grid">
                                 <?php foreach ($stages as $index => $stage): ?>
                                     <div class="step-item wow fadeInUp">
@@ -181,6 +396,72 @@ $questions_answers = get_field('questions_answers');
                     <img src="<?php echo esc_url($stages_image['url']); ?>" alt=""
                          class="service-banner">
                 <?php endif; ?>
+
+                <?php if ($contraindications_hidden !== "Да"): ?>
+                    <div class="service-row service-row__half">
+                        <?php if (!empty($indications)): ?>
+                            <div class="service-left">
+                                <div class="wow fadeInUp sectitle">Показания к проведению</div>
+                                <ul class="custom-list">
+                                    <?php
+                                    $i = 1;
+                                    foreach ($indications as $item):
+                                        $text = $item['text'];
+                                        if (!empty($text)): ?>
+                                            <li class="desc wow fadeInLeft" data-wow-delay="<?php echo '0.' . $i; ?>s">
+                                                <p><?php echo esc_html($text); ?></p>
+                                            </li>
+                                            <?php
+                                            $i++;
+                                        endif;
+                                    endforeach; ?>
+                                </ul>
+                            </div>
+                        <?php endif; ?>
+
+                        <?php if (!empty($contraindications)): ?>
+                            <div class="<?php echo !empty($indications) ? 'service-right' : 'service-left'; ?>">
+                                <div class="wow fadeInUp sectitle">Противопоказания</div>
+                                <ul class="custom-list disable-list">
+                                    <?php
+                                    $j = 1;
+                                    foreach ($contraindications as $item):
+                                        $text = $item['text'];
+                                        if (!empty($text)): ?>
+                                            <li class="desc wow fadeInLeft" data-wow-delay="<?php echo '0.' . $j; ?>s">
+                                                <p><?php echo esc_html($text); ?></p>
+                                            </li>
+                                            <?php
+                                            $j++;
+                                        endif;
+                                    endforeach; ?>
+                                </ul>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                <?php endif; ?>
+
+                <?php if ($facts_hidden !== "Да"): ?>
+                    <div class="service-row">
+                        <div class="service-left">
+                            <h2 class="sectitle wow fadeInUp"><?php echo esc_html($facts_title); ?></h2>
+                            <p class="desc wow fadeInUp"><?php echo esc_html($facts_text); ?></p>
+                            <div class="facts-grid">
+                                <?php if ($facts): ?>
+                                    <?php $i = 1; ?>
+                                    <?php foreach ($facts as $fact): ?>
+                                        <div class="fact-item wow fadeInUp"
+                                             data-wow-delay="<?php echo esc_attr($i * 0.1); ?>s">
+                                            <p><?php echo esc_html($fact['text']); ?></p>
+                                        </div>
+                                        <?php $i++; ?>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
+                <?php endif; ?>
+
 
                 <?php if ($results_hidden !== "Да"): ?>
                     <?php foreach ($results as $result): ?>
@@ -257,139 +538,8 @@ $questions_answers = get_field('questions_answers');
             </section>
         <?php endif; ?>
 
-        <section class="sale">
-            <div class="container">
-                <div class="section-top">
-                    <div class="sale-sectitle wow fadeInLeft">
-                        <h2 class="sectitle">Акции</h2>
-                        <a href="#" class="all-sale">/ Все акции</a>
-                    </div>
-                    <div class="sale-swiper__actions">
-                        <div class="sale-prev">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="9" height="17" viewBox="0 0 9 17"
-                                 fill="none">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                      d="M7.4 17L9 15.0167L3.74286 8.5L9 1.98333L7.4 4.76837e-07L0.542857 8.5L7.4 17Z"
-                                      fill="#000"/>
-                            </svg>
-                            <span class="arr-line"></span>
-                        </div>
-                        <div class="sale-pagination swiper-pagination"></div>
-                        <div class="sale-next">
-                            <span class="arr-line"></span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="9" height="17" viewBox="0 0 9 17"
-                                 fill="none">
-                                <path fill-rule="evenodd" clip-rule="evenodd"
-                                      d="M1.6 0L0 1.98333L5.25714 8.5L0 15.0167L1.6 17L8.45714 8.5L1.6 0Z" fill="#000"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-                <div class="sale-swiper swiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="sale-item wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="sale-item__top">
-                                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/sale/sale1.webp"
-                                         alt="">
-                                    <div class="sale-discount">-20%</div>
-                                </div>
-                                <div class="sale-title">Пилинг Prxt33 / BiorepeelC3 / Peach peel</div>
-                                <p class="sale-desc">Разглаживает мелкие морщинки, выравнивает цвет лица, улучшает
-                                    качество кожи<em>Лицо полностью</em></p>
-                                <div class="sale-price">Всего <span>5900</span> 4400 руб.</div>
-                                <a href="#" class="sale-btn">Записаться</a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="sale-item wow fadeInUp" data-wow-delay="0.2s">
-                                <div class="sale-item__top">
-                                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/sale/sale2.jpg"
-                                         alt="">
-                                    <div class="sale-discount">-20%</div>
-                                </div>
-                                <div class="sale-title">Dermadrop</div>
-                                <p class="sale-desc">Уникальная технология, которая доставляет гиалуроновую кислоту,
-                                    витамины и микроэлементы в глубокие слои кожи без инъекций<em>-20% на любую
-                                        программу</em></p>
-                                <div class="sale-price">Всего <span>100</span> 80 руб.</div>
-                                <a href="#" class="sale-btn">Записаться</a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="sale-item wow fadeInUp" data-wow-delay="0.3s">
-                                <div class="sale-item__top">
-                                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/sale/sale3.jpg"
-                                         alt="">
-                                    <div class="sale-discount">-20%</div>
-                                </div>
-                                <div class="sale-title">Лазерная шлифовка</div>
-                                <p class="sale-desc">Рубцов и постакне на CO2 лазере Deka SmartXide<em>Лицо полностью -
-                                        интенсивная шлифовка</em></p>
-                                <div class="sale-price">Всего <span>21000</span> 17000 руб.</div>
-                                <a href="#" class="sale-btn">Записаться</a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="sale-item">
-                                <div class="sale-item__top">
-                                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/sale/sale4.jpg"
-                                         alt="">
-                                    <div class="sale-discount">-20%</div>
-                                </div>
-                                <div class="sale-title"> Пилинг Prxt33 / BiorepeelC3 / Peach peel</div>
-                                <p class="sale-desc">Разглаживает мелкие морщинки, выравнивает цвет лица, улучшает
-                                    качество кожи<em>Лицо полностью</em></p>
-                                <div class="sale-price">Всего <span>5900</span> 4400 руб.</div>
-                                <a href="#" class="sale-btn">Записаться</a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="sale-item">
-                                <div class="sale-item__top">
-                                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/sale/sale5.jpg"
-                                         alt="">
-                                    <div class="sale-discount">-20%</div>
-                                </div>
-                                <div class="sale-title"> Пилинг Prxt33 / BiorepeelC3 / Peach peel</div>
-                                <p class="sale-desc">Разглаживает мелкие морщинки, выравнивает цвет лица, улучшает
-                                    качество кожи<em>Лицо полностью</em></p>
-                                <div class="sale-price">Всего <span>5900</span> 4400 руб.</div>
-                                <a href="#" class="sale-btn">Записаться</a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="sale-item">
-                                <div class="sale-item__top">
-                                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/sale/sale6.jpg"
-                                         alt="">
-                                    <div class="sale-discount">-20%</div>
-                                </div>
-                                <div class="sale-title"> Пилинг Prxt33 / BiorepeelC3 / Peach peel</div>
-                                <p class="sale-desc">Разглаживает мелкие морщинки, выравнивает цвет лица, улучшает
-                                    качество кожи<em>Лицо полностью</em></p>
-                                <div class="sale-price">Всего <span>5900</span> 4400 руб.</div>
-                                <a href="#" class="sale-btn">Записаться</a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="sale-item">
-                                <div class="sale-item__top">
-                                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/sale/sale7.jpg"
-                                         alt="">
-                                    <div class="sale-discount">-20%</div>
-                                </div>
-                                <div class="sale-title"> Пилинг Prxt33 / BiorepeelC3 / Peach peel</div>
-                                <p class="sale-desc">Разглаживает мелкие морщинки, выравнивает цвет лица, улучшает
-                                    качество кожи<em>Лицо полностью</em></p>
-                                <div class="sale-price">Всего <span>5900</span> 4400 руб.</div>
-                                <a href="#" class="sale-btn">Записаться</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <?php get_template_part('template-parts/section/section', 'discounts'); ?>
+
 
         <?php if ($questions_answers_hidden !== "Да"): ?>
             <section class="faq">

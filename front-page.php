@@ -1,32 +1,25 @@
 <?php
 get_header();
+
+// Slides (Hero)
+$slides = get_field('slides');
 ?>
 
 
     <section class="hero">
         <div class="hero-swiper swiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide hero-item">
-                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/hero/ns1.jpg.webp" data-lazy="<?php echo get_template_directory_uri() ?>/assets/img/hero/ns1.jpg.webp" alt="" class="hero-img">
-                    <div class="container">
-                        <div class="hero-item__title wow bounceInUp">Передовые препараты</div>
-                        <p class="hero-item__desc wow bounceInUp">и оборудование</p>
+                <?php foreach ($slides as $index => $slide): ?>
+                    <div class="swiper-slide hero-item">
+                        <img src="<?php echo esc_url($slide['image']['url']); ?>"
+                             data-lazy="<?php echo esc_url($slide['image']['url']); ?>" alt=""
+                             class="hero-img">
+                        <div class="container">
+                            <div class="hero-item__title <?php if ($index === 0): ?>wow<?php endif; ?> bounceInUp"><?php echo esc_html($slide['title']); ?></div>
+                            <p class="hero-item__desc <?php if ($index === 0): ?>wow<?php endif; ?> bounceInUp"><?php echo esc_html($slide['short_description']); ?></p>
+                        </div>
                     </div>
-                </div>
-                <div class="swiper-slide hero-item">
-                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/hero/ns4.jpg.webp" data-lazy="<?php echo get_template_directory_uri() ?>/assets/img/hero/ns4.jpg.webp" alt="" class="hero-img">
-                    <div class="container">
-                        <div class="hero-item__title bounceInUp">Привлекательные цены</div>
-                        <p class="hero-item__desc bounceInUp">карты для постоянных клиентов, акции для новых</p>
-                    </div>
-                </div>
-                <div class="swiper-slide hero-item">
-                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/hero/ns5.jpg.webp" data-lazy="<?php echo get_template_directory_uri() ?>/assets/img/hero/ns5.jpg.webp" alt="" class="hero-img">
-                    <div class="container">
-                        <div class="hero-item__title bounceInUp">Современная косметология</div>
-                        <p class="hero-item__desc bounceInUp">В Санкт-Петербурге</p>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </div>
         <div class="hero-actions">
@@ -223,49 +216,10 @@ get_header();
                 </div>
             </div>
         </section>
-        <section id="service" class="service">
-            <div class="container">
-                <h2 class="sectitle wow fadeInUp">Наши услуги</h2>
-                <p class="desc service-desc wow fadeInUp" data-wow-delay="0.2s">Основные направления деятельности</p>
-                <div class="service-grid">
-                    <a href="#" class="service-item wow fadeInUp">
-                        <img src="<?php echo get_template_directory_uri() ?>/assets/img/service/service.webp" alt="" data-wow-delay="0.2s">
-                        <div class="service-item__title">инъекционная косметология</div>
-                        <p class="service-item__desc">Ботокс, контурная пластика, мезотерапия и многое другое.</p>
-                    </a>
-                    <a href="#" class="service-item wow fadeInUp" data-wow-delay="0.3s">
-                        <img src="<?php echo get_template_directory_uri() ?>/assets/img/service/service2.webp" alt="">
-                        <div class="service-item__title">Терапевтическая косметология</div>
-                        <p class="service-item__desc">Пилинги и чистки с применением медицинских препаратов.</p>
-                    </a>
-                    <a href="#" class="service-item wow fadeInUp" data-wow-delay="0.4s">
-                        <img src="<?php echo get_template_directory_uri() ?>/assets/img/service/service3.webp" alt="">
-                        <div class="service-item__title">Аппаратная косметология</div>
-                        <p class="service-item__desc">От шлифовки кожи до удаления шрамов.</p>
-                    </a>
-                    <a href="#" class="service-item wow fadeInUp" data-wow-delay="0.5s">
-                        <img src="<?php echo get_template_directory_uri() ?>/assets/img/service/service4.webp" alt="">
-                        <div class="service-item__title">Аппаратный и ручной массаж тела</div>
-                        <p class="service-item__desc">RSL-скульптурирование и ручной массаж. Абонементы.</p>
-                    </a>
-                    <a href="#" class="service-item wow fadeInUp" data-wow-delay="0.6s">
-                        <img src="<?php echo get_template_directory_uri() ?>/assets/img/service/service5.webp" alt="">
-                        <div class="service-item__title">Лазерная эпиляция</div>
-                        <p class="service-item__desc">Эпиляция на Motus Deka AX Moveo.</p>
-                    </a>
-                    <a href="#" class="service-item wow fadeInUp" data-wow-delay="0.7s">
-                        <img src="<?php echo get_template_directory_uri() ?>/assets/img/service/service6.webp" alt="">
-                        <div class="service-item__title">Перманентный макияж</div>
-                        <p class="service-item__desc">Татуаж бровей, век, губ.</p>
-                    </a>
-                    <a href="#" class="service-item wow fadeInUp" data-wow-delay="0.8s">
-                        <img src="<?php echo get_template_directory_uri() ?>/assets/img/service/service7.webp" alt="">
-                        <div class="service-item__title">Ногтевой сервис</div>
-                        <p class="service-item__desc">Женский и мужской маникюр.</p>
-                    </a>
-                </div>
-            </div>
-        </section>
+
+
+        <?php get_template_part('template-parts/section/section', 'services'); ?>
+
         <section>
             <div class="container">
                 <div class="call-form__wrap">
@@ -308,239 +262,17 @@ get_header();
                 </div>
             </div>
         </section>
-        <section class="sale">
-            <div class="container">
-                <div class="section-top">
-                    <div class="sale-sectitle wow fadeInLeft">
-                        <h2 class="sectitle">Акции</h2>
-                        <a href="#" class="all-sale">/ Все акции</a>
-                    </div>
-                    <div class="sale-swiper__actions">
-                        <div class="sale-prev">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="9" height="17" viewBox="0 0 9 17" fill="none">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M7.4 17L9 15.0167L3.74286 8.5L9 1.98333L7.4 4.76837e-07L0.542857 8.5L7.4 17Z" fill="#000"/>
-                            </svg>
-                            <span class="arr-line"></span>
-                        </div>
-                        <div class="sale-pagination swiper-pagination"></div>
-                        <div class="sale-next">
-                            <span class="arr-line"></span>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="9" height="17" viewBox="0 0 9 17" fill="none">
-                                <path fill-rule="evenodd" clip-rule="evenodd" d="M1.6 0L0 1.98333L5.25714 8.5L0 15.0167L1.6 17L8.45714 8.5L1.6 0Z" fill="#000"/>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-                <div class="sale-swiper swiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <div class="sale-item wow fadeInUp" data-wow-delay="0.1s">
-                                <div class="sale-item__top">
-                                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/sale/sale1.webp" alt="">
-                                    <div class="sale-discount">-20%</div>
-                                </div>
-                                <div class="sale-title">Пилинг Prxt33 / BiorepeelC3 / Peach peel</div>
-                                <p class="sale-desc">Разглаживает мелкие морщинки, выравнивает цвет лица, улучшает качество кожи<em>Лицо полностью</em></p>
-                                <div class="sale-price">Всего <span>5900</span> 4400 руб.</div>
-                                <a href="#" class="sale-btn" data-modal="order-modal">Записаться</a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="sale-item wow fadeInUp" data-wow-delay="0.2s">
-                                <div class="sale-item__top">
-                                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/sale/sale2.jpg" alt="">
-                                    <div class="sale-discount">-20%</div>
-                                </div>
-                                <div class="sale-title">Dermadrop</div>
-                                <p class="sale-desc">Уникальная технология, которая доставляет гиалуроновую кислоту, витамины и микроэлементы в глубокие слои кожи без инъекций<em>-20% на любую программу</em></p>
-                                <div class="sale-price">Всего <span>100</span> 80 руб.</div>
-                                <a href="#" class="sale-btn" data-modal="order-modal">Записаться</a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="sale-item wow fadeInUp" data-wow-delay="0.3s">
-                                <div class="sale-item__top">
-                                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/sale/sale3.jpg" alt="">
-                                    <div class="sale-discount">-20%</div>
-                                </div>
-                                <div class="sale-title">Лазерная шлифовка</div>
-                                <p class="sale-desc">Рубцов и постакне на CO2 лазере Deka SmartXide<em>Лицо полностью - интенсивная шлифовка</em></p>
-                                <div class="sale-price">Всего <span>21000</span> 17000 руб.</div>
-                                <a href="#" class="sale-btn" data-modal="order-modal">Записаться</a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="sale-item">
-                                <div class="sale-item__top">
-                                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/sale/sale4.jpg" alt="">
-                                    <div class="sale-discount">-20%</div>
-                                </div>
-                                <div class="sale-title"> Пилинг Prxt33 / BiorepeelC3 / Peach peel</div>
-                                <p class="sale-desc">Разглаживает мелкие морщинки, выравнивает цвет лица, улучшает качество кожи<em>Лицо полностью</em></p>
-                                <div class="sale-price">Всего <span>5900</span> 4400 руб.</div>
-                                <a href="#" class="sale-btn" data-modal="order-modal">Записаться</a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="sale-item">
-                                <div class="sale-item__top">
-                                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/sale/sale5.jpg" alt="">
-                                    <div class="sale-discount">-20%</div>
-                                </div>
-                                <div class="sale-title"> Пилинг Prxt33 / BiorepeelC3 / Peach peel</div>
-                                <p class="sale-desc">Разглаживает мелкие морщинки, выравнивает цвет лица, улучшает качество кожи<em>Лицо полностью</em></p>
-                                <div class="sale-price">Всего <span>5900</span> 4400 руб.</div>
-                                <a href="#" class="sale-btn" data-modal="order-modal">Записаться</a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="sale-item">
-                                <div class="sale-item__top">
-                                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/sale/sale6.jpg" alt="">
-                                    <div class="sale-discount">-20%</div>
-                                </div>
-                                <div class="sale-title"> Пилинг Prxt33 / BiorepeelC3 / Peach peel</div>
-                                <p class="sale-desc">Разглаживает мелкие морщинки, выравнивает цвет лица, улучшает качество кожи<em>Лицо полностью</em></p>
-                                <div class="sale-price">Всего <span>5900</span> 4400 руб.</div>
-                                <a href="#" class="sale-btn" data-modal="order-modal">Записаться</a>
-                            </div>
-                        </div>
-                        <div class="swiper-slide">
-                            <div class="sale-item">
-                                <div class="sale-item__top">
-                                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/sale/sale7.jpg" alt="">
-                                    <div class="sale-discount">-20%</div>
-                                </div>
-                                <div class="sale-title"> Пилинг Prxt33 / BiorepeelC3 / Peach peel</div>
-                                <p class="sale-desc">Разглаживает мелкие морщинки, выравнивает цвет лица, улучшает качество кожи<em>Лицо полностью</em></p>
-                                <div class="sale-price">Всего <span>5900</span> 4400 руб.</div>
-                                <a href="#" class="sale-btn" data-modal="order-modal">Записаться</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <section class="specialists">
-            <div class="container">
-                <div class="section-top">
-                    <div class="specialists-sectitle wow fadeInLeft">
-                        <h2 class="sectitle">Наши специалисты</h2>
-                        <p class="desc">Команда нашей клиники</p>
-                    </div>
-                </div>
-                <div class="spec-grid">
-                    <a href="#" class="spec-item wow fadeInUp" data-wow-delay="0.1s">
-                        <img src="<?php echo get_template_directory_uri() ?>/assets/img/spec/spec2.jpg.webp" alt="">
-                        <div class="spec-content">
-                            <div class="spec-title">Баишева Диана Мидихатовна</div>
-                            <p class="desc">Главный врач, ведущий дерматолог, косметолог, трихолог</p>
-                        </div>
-                    </a>
-                    <a href="#" class="spec-item wow fadeInUp" data-wow-delay="0.2s">
-                        <img src="<?php echo get_template_directory_uri() ?>/assets/img/spec/spec1.jpg.webp" alt="">
-                        <div class="spec-content">
-                            <div class="spec-title">Баишева Диана Мидихатовна</div>
-                            <p class="desc">Главный врач, ведущий дерматолог, косметолог, трихолог</p>
-                        </div>
-                    </a>
-                    <a href="#" class="spec-item wow fadeInUp" data-wow-delay="0.3s">
-                        <img src="<?php echo get_template_directory_uri() ?>/assets/img/spec/spec3.jpg.webp" alt="">
-                        <div class="spec-content">
-                            <div class="spec-title">Баишева Диана Мидихатовна</div>
-                            <p class="desc">Главный врач, ведущий дерматолог, косметолог, трихолог</p>
-                        </div>
-                    </a>
-                </div>
-                <a href="#" class="spec-btn wow fadeInUp" data-wow-delay="0.4s">
-                    Посмотреть всех
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13" fill="none">
-                        <path d="M0 5.6875H12.17L6.58 1.14562L8 0L16 6.5L8 13L6.59 11.8544L12.17 7.3125H0V5.6875Z" fill="#FFF"></path>
-                    </svg>
-                </a>
-            </div>
-        </section>
-        <section class="review">
-            <div class="container">
-                <div class="section-top">
-                    <div class="review-sectitle wow fadeInLeft">
-                        <h2 class="sectitle">Отзывы наших пациентов</h2>
-                        <p class="desc">Вот, что наши пациенты пишут о нас</p>
-                    </div>
-                </div>
-                <div class="review-swiper swiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide wow fadeInUp" data-wow-delay="0.1s">
-                            <img src="<?php echo get_template_directory_uri() ?>/assets/img/review/review1.webp" alt="">
-                        </div>
-                        <div class="swiper-slide wow fadeInUp" data-wow-delay="0.2s">
-                            <img src="<?php echo get_template_directory_uri() ?>/assets/img/review/review2.webp" alt="">
-                        </div>
-                        <div class="swiper-slide wow fadeInUp" data-wow-delay="0.3s">
-                            <img src="<?php echo get_template_directory_uri() ?>/assets/img/review/review3.webp" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?php echo get_template_directory_uri() ?>/assets/img/review/review4.webp" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?php echo get_template_directory_uri() ?>/assets/img/review/review5.webp" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?php echo get_template_directory_uri() ?>/assets/img/review/review6.webp" alt="">
-                        </div>
-                        <div class="swiper-slide">
-                            <img src="<?php echo get_template_directory_uri() ?>/assets/img/review/review7.webp" alt="">
-                        </div>
-                    </div>
-                    <div class="swiper-pagination review-gapination"></div>
-                </div>
-            </div>
-        </section>
-        <section class="equipment">
-            <div class="container">
-                <div class="section-top">
-                    <div class="equipment-sectitle wow fadeInUp">
-                        <h2 class="sectitle">Наше оборудование</h2>
-                        <p class="desc">Мы используем самое современное оборудование</p>
-                    </div>
-                </div>
-                <div class="equipment-grid">
-                    <a href="#" class="equipment-item wow fadeInUp" data-wow-delay="0.1s">
-                        <div class="equipment-bg">
-                            <img src="<?php echo get_template_directory_uri() ?>/assets/img/equipment/1.webp" alt="">
-                        </div>
-                        <div class="equipment-content">
-                            <div class="equip-title">Motus AX Deka Moveo</div>
-                            <p class="equip-desc">Высокоскоростной александритовый лазер для эпиляции</p>
-                        </div>
-                    </a>
-                    <a href="#" class="equipment-item wow fadeInUp" data-wow-delay="0.2s">
-                        <div class="equipment-bg">
-                            <img src="<?php echo get_template_directory_uri() ?>/assets/img/equipment/2.webp" alt="">
-                        </div>
-                        <div class="equipment-content">
-                            <div class="equip-title">Inmode Lumecca</div>
-                            <p class="equip-desc">Аппарат для устранения пигментных, сосудистых дефектов</p>
-                        </div>
-                    </a>
-                    <a href="#" class="equipment-item wow fadeInUp" data-wow-delay="0.3s">
-                        <div class="equipment-bg">
-                            <img src="<?php echo get_template_directory_uri() ?>/assets/img/equipment/3.webp" alt="">
-                        </div>
-                        <div class="equipment-content">
-                            <div class="equip-title">Lasertech H2</div>
-                            <p class="equip-desc">Неодимовый лазер для удаления тату и пигментаций</p>
-                        </div>
-                    </a>
-                </div>
-                <a href="#" class="spec-btn wow fadeInUp">
-                    Посмотреть всех
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13" fill="none">
-                        <path d="M0 5.6875H12.17L6.58 1.14562L8 0L16 6.5L8 13L6.59 11.8544L12.17 7.3125H0V5.6875Z" fill="#FFF"></path>
-                    </svg>
-                </a>
-            </div>
-        </section>
+
+        <?php get_template_part('template-parts/section/section', 'discounts'); ?>
+
+
+        <?php get_template_part('template-parts/section/section', 'specialists'); ?>
+
+        <?php get_template_part('template-parts/section/section', 'reviews'); ?>
+
+        <?php get_template_part('template-parts/section/section', 'equipments'); ?>
+
+
         <section class="license">
             <div class="container">
                 <div class="license-row">

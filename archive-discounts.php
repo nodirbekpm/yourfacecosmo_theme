@@ -1,5 +1,25 @@
 <?php
 get_header();
+
+// Main texts
+$discounts__short_description = get_field('discounts__short_description', 'option');
+$discounts__description = get_field('discounts__description', 'option');
+
+// Special Offer
+$discounts__special_title = get_field('discounts__special_title', 'option');
+$discounts__special_text = get_field('discounts__special_text', 'option');
+
+// Discount
+$discounts__discount_image = get_field('discounts__discount_image', 'option');
+$discounts__discount_percent = get_field('discounts__discount_percent', 'option');
+$discounts__discount_text = get_field('discounts__discount_text', 'option');
+
+// Full Special offer
+$discounts__full_special_title = get_field('discounts__full_special_title', 'option');
+$discounts__full_special_text = get_field('discounts__full_special_text', 'option');
+$discounts__full_special_offers = get_field('discounts__full_special_offers', 'option');
+$discounts__additional_informations = get_field('discounts__additional_informations', 'option');
+
 ?>
 
     <main>
@@ -14,30 +34,31 @@ get_header();
                 <div class="sale-top">
                     <div class="sale-left">
                         <h2 class="sectitle wow fadeInUp">Акции</h2>
-                        <div class="subtitle wow fadeInUp">Специальные предложения нашей клиники <span>для первичных пациентов</span></div>
-                        <p class="desc wow fadeInUp">Здесь вы можете ознакомиться со списком действующих у нас акций.</p>
+                        <div class="subtitle wow fadeInUp"><?php echo apply_filters('the_content', $discounts__short_description); ?></div>
+                        <p class="desc wow fadeInUp"><?php echo esc_html($discounts__description); ?></p>
                     </div>
                     <div class="sale-right wow fadeInUp">
-                        <div class="sectitle">Спецпредложения Августа</div>
-                        <p class="desc">У нас действуют спецпредложения для всех пациентов!</p>
+                        <div class="sectitle"><?php echo esc_html($discounts__special_title); ?></div>
+                        <p class="desc"><?php echo esc_html($discounts__special_text); ?></p>
                         <a href="#" class="btn-main">
                             К спецпредложениям
-                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="#FFF"
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                 fill="#FFF"
                                  width="800px" version="1.1" id="Layer_1" viewBox="0 0 512 512" xml:space="preserve">
                                     <g>
                                         <g>
                                             <path
-                                                d="M478.609,99.726H441.34c4.916-7.78,8.16-16.513,9.085-25.749C453.38,44.46,437.835,18,411.37,6.269    c-24.326-10.783-51.663-6.375-71.348,11.479l-47.06,42.65c-9.165-10.024-22.34-16.324-36.962-16.324    c-14.648,0-27.844,6.32-37.011,16.375l-47.12-42.706C152.152-0.111,124.826-4.502,100.511,6.275    C74.053,18.007,58.505,44.476,61.469,73.992c0.927,9.229,4.169,17.958,9.084,25.734H33.391C14.949,99.726,0,114.676,0,133.117    v50.087c0,9.22,7.475,16.696,16.696,16.696h478.609c9.22,0,16.696-7.475,16.696-16.696v-50.087    C512,114.676,497.051,99.726,478.609,99.726z M205.913,94.161v5.565H127.37c-20.752,0-37.084-19.346-31.901-40.952    c2.283-9.515,9.151-17.626,18.034-21.732c12.198-5.638,25.71-3.828,35.955,5.445l56.469,51.182    C205.924,93.834,205.913,93.996,205.913,94.161z M417.294,69.544c-1.244,17.353-16.919,30.184-34.316,30.184h-76.891v-5.565    c0-0.197-0.012-0.392-0.014-0.589c12.792-11.596,40.543-36.748,55.594-50.391c8.554-7.753,20.523-11.372,31.587-8.072    C409.131,39.847,418.455,53.349,417.294,69.544z" />
+                                                    d="M478.609,99.726H441.34c4.916-7.78,8.16-16.513,9.085-25.749C453.38,44.46,437.835,18,411.37,6.269    c-24.326-10.783-51.663-6.375-71.348,11.479l-47.06,42.65c-9.165-10.024-22.34-16.324-36.962-16.324    c-14.648,0-27.844,6.32-37.011,16.375l-47.12-42.706C152.152-0.111,124.826-4.502,100.511,6.275    C74.053,18.007,58.505,44.476,61.469,73.992c0.927,9.229,4.169,17.958,9.084,25.734H33.391C14.949,99.726,0,114.676,0,133.117    v50.087c0,9.22,7.475,16.696,16.696,16.696h478.609c9.22,0,16.696-7.475,16.696-16.696v-50.087    C512,114.676,497.051,99.726,478.609,99.726z M205.913,94.161v5.565H127.37c-20.752,0-37.084-19.346-31.901-40.952    c2.283-9.515,9.151-17.626,18.034-21.732c12.198-5.638,25.71-3.828,35.955,5.445l56.469,51.182    C205.924,93.834,205.913,93.996,205.913,94.161z M417.294,69.544c-1.244,17.353-16.919,30.184-34.316,30.184h-76.891v-5.565    c0-0.197-0.012-0.392-0.014-0.589c12.792-11.596,40.543-36.748,55.594-50.391c8.554-7.753,20.523-11.372,31.587-8.072    C409.131,39.847,418.455,53.349,417.294,69.544z"/>
                                         </g>
                                     </g>
                                 <g>
                                     <g>
-                                        <path d="M33.391,233.291v244.87c0,18.442,14.949,33.391,33.391,33.391h155.826V233.291H33.391z" />
+                                        <path d="M33.391,233.291v244.87c0,18.442,14.949,33.391,33.391,33.391h155.826V233.291H33.391z"/>
                                     </g>
                                 </g>
                                 <g>
                                     <g>
-                                        <path d="M289.391,233.291v278.261h155.826c18.442,0,33.391-14.949,33.391-33.391v-244.87H289.391z" />
+                                        <path d="M289.391,233.291v278.261h155.826c18.442,0,33.391-14.949,33.391-33.391v-244.87H289.391z"/>
                                     </g>
                                 </g>
                                 </svg>
@@ -45,20 +66,21 @@ get_header();
                     </div>
                 </div>
                 <div class="sale-wrap">
-                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/sale/sale8.jpg" alt="" class="sale-banner-img">
+                    <img src="<?php echo esc_url($discounts__discount_image['url']) ?>" alt="" class="sale-banner-img">
                     <div>
-                        <div class="small-title">Акция <span>-15%</span></div>
-                        <p class="desc">На первое посещение маникюра действует скидка 15% или SPA уход на La Sultan De Saba</p>
+                        <div class="small-title">Акция
+                            <span>-<?php echo esc_html($discounts__discount_percent); ?>%</span></div>
+                        <p class="desc"><?php echo esc_html($discounts__discount_text); ?></p>
                         <a href="#" class="btn-main btn-small">Участвовать</a>
                     </div>
                 </div>
                 <div class="sale-grid">
                     <?php
                     $args = array(
-                        'post_type'      => 'discounts',
+                        'post_type' => 'discounts',
                         'posts_per_page' => -1,
-                        'orderby'        => 'date',
-                        'order'          => 'DESC',
+                        'orderby' => 'date',
+                        'order' => 'DESC',
                     );
 
                     $discounts = new WP_Query($args);
@@ -66,11 +88,11 @@ get_header();
 
                     if ($discounts->have_posts()) :
                         while ($discounts->have_posts()) : $discounts->the_post();
-                            $image     = get_field('image');        // ACF: Картинка
-                            $discount  = get_field('discount');     // ACF: Скидка (%) - range
-                            $text      = get_field('text');         // ACF: Описание
-                            $titre     = get_field('titre');        // ACF: Доп. текст
-                            $price     = get_field('price');        // ACF: Цена (оригинальная)
+                            $image = get_field('image');        // ACF: Картинка
+                            $discount = get_field('discount');     // ACF: Скидка (%) - range
+                            $text = get_field('text');         // ACF: Описание
+                            $titre = get_field('titre');        // ACF: Доп. текст
+                            $price = get_field('price');        // ACF: Цена (оригинальная)
 
                             // yangi narx hisoblash
                             $new_price = (!empty($price) && $discount > 0)
@@ -81,7 +103,8 @@ get_header();
                             <div class="sale-item wow fadeInUp" data-wow-delay="<?php echo '0.' . $i; ?>s">
                                 <div class="sale-item__top">
                                     <?php if (!empty($image)) : ?>
-                                        <img src="<?php echo esc_url($image['url']); ?>" alt="<?php echo esc_attr(get_the_title()); ?>">
+                                        <img src="<?php echo esc_url($image['url']); ?>"
+                                             alt="<?php echo esc_attr(get_the_title()); ?>">
                                     <?php endif; ?>
 
                                     <?php if (!empty($discount)) : ?>
@@ -102,7 +125,9 @@ get_header();
 
                                 <?php if (!empty($price) && $price > 0) : ?>
                                     <div class="sale-price">
-                                        Всего <span><?php echo esc_html($price); ?></span> <?php echo esc_html($new_price); ?> руб.
+                                        Всего
+                                        <span><?php echo esc_html($price); ?></span> <?php echo esc_html($new_price); ?>
+                                        руб.
                                     </div>
                                 <?php endif; ?>
 
@@ -119,37 +144,40 @@ get_header();
                     ?>
                 </div>
                 <div class="sale-info">
-                    <div class="sectitle wow fadeInUp">Специальные предложения Августа</div>
-                    <p class="caption wow fadeInUp">Специальные предложения нашей клиники для всех пациентов</p>
+                    <div class="sectitle wow fadeInUp"><?php echo esc_html($discounts__full_special_title); ?></div>
+                    <p class="caption wow fadeInUp"><?php echo esc_html($discounts__full_special_text); ?></p>
                     <div class="">
+                        <?php
+                        $delay = 0.1; // boshlang'ich delay
+                        foreach ($discounts__full_special_offers as $offer):
+                            ?>
+                            <div class="sale-info__item">
+                                <p class="sale-info__title wow slideInLeft" data-wow-delay="<?= $delay ?>s">
+                                    <strong><?= esc_html($offer['title']); ?></strong>
+                                </p>
+
+                                <?php if (!empty($offer['facilities'])): ?>
+                                    <ul class="custom-list">
+                                        <?php foreach ($offer['facilities'] as $facility):
+                                            $delay += 0.1; // har bir facility uchun 0.1 qo‘shamiz
+                                            ?>
+                                            <li class="wow slideInLeft" data-wow-delay="<?= $delay ?>s">
+                                                <?= wpautop($facility['text']); ?>
+                                            </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                <?php endif; ?>
+                            </div>
+                            <?php
+                            $delay += 0.1; // item tugagandan keyin keyingi titlega 0.1 qo‘shiladi
+                        endforeach;
+                        ?>
                         <div class="sale-info__item">
-                            <p class="sale-info__title wow slideInLeft" data-wow-delay="0.1s"><strong>Эпиляция Deka MOVEO</strong></p>
-                            <ul class="custom-list">
-                                <li class="wow slideInLeft" data-wow-delay="0.2s"><p>Тест драйв бикини глубокое+ подмышки за <span>3900₽</span></p></li>
-                                <li class="wow slideInLeft" data-wow-delay="0.3s"><p>Комплекс Все тело без ограничений <span>14900₽</span> + малая зона на лице <span>в подарок</span></p></li>
-                            </ul>
-                        </div>
-                        <div class="sale-info__item">
-                            <p class="sale-info__title wow slideInLeft" data-wow-delay="0.4s"><strong>Косметология</strong></p>
-                            <ul class="custom-list">
-                                <li class="wow slideInLeft" data-wow-delay="0.5s"><p>NEW! Липолитик Biogel СТРОЙНОСТЬ <span>-20%</span> от двух флаконов</p></li>
-                                <li class="wow slideInLeft" data-wow-delay="0.6s"><p>PRP-терапия Cortexill — курс из трёх процедур со скидкой 15% — <span>22185₽</span></p></li>
-                                <li class="wow slideInLeft" data-wow-delay="0.7s"><p>HydraFacial + Lumecca <span>15900₽</span></p></li>
-                                <li class="wow slideInLeft" data-wow-delay="0.8s"><p>Premium чистка лица + DermaDrop <span>11500₽</span></p></li>
-                            </ul>
-                        </div>
-                        <div class="sale-info__item">
-                            <p class="sale-info__title wow slideInLeft" data-wow-delay="0.9s"><strong>Массаж</strong></p>
-                            <ul class="custom-list">
-                                <li class="wow slideInLeft" data-wow-delay="1s"><p>Аппаратный массаж пробное посещение 75мин — <span>5900₽</span></p></li>
-                                <li class="wow slideInLeft" data-wow-delay="1.1s"><p>Ручной расслабляющий массаж La Sultan De Saba — знакомство с новым специалистом <span>-30%</span></p></li>
-                                <li class="wow slideInLeft" data-wow-delay="1.2s"><p>HydraFacial + Lumecca <span>15900₽</span></p></li>
-                                <li class="wow slideInLeft" data-wow-delay="1.3s"><p>Premium чистка лица + DermaDrop <span>11500₽</span></p></li>
-                            </ul>
                             <p class="wow slideInLeft" data-wow-delay="1.4s">* акции не суммируются с другими специальными предложениями</p>
                             <p class="wow slideInLeft" data-wow-delay="1.5s">** подробности уточняйте при записи</p>
                             <p class="wow slideInLeft" data-wow-delay="1.6s">*** доп. акции на первое посещение на нашем сайте</p>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -159,7 +187,8 @@ get_header();
                 <div class="call-form__wrap">
                     <form class="call-form wow bounceIn">
                         <div class="call-form__title">Записаться или получить бесплатную консультацию онлайн</div>
-                        <p class="desc">Заполните эту форму. Мы свяжемся с вами, чтобы проконсультировать или записать вас на приём.</p>
+                        <p class="desc">Заполните эту форму. Мы свяжемся с вами, чтобы проконсультировать или записать
+                            вас на приём.</p>
                         <div class="call-form__row">
                             <label class="call-form__label">
                                 <input type="text" placeholder="Ваше имя *" name="name">
@@ -182,21 +211,26 @@ get_header();
                         <div>
                             <a href="#" class="call-form__link">
                                 Записаться на yclients.com
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13" fill="none">
-                                    <path d="M0 5.6875H12.17L6.58 1.14562L8 0L16 6.5L8 13L6.59 11.8544L12.17 7.3125H0V5.6875Z" fill="#FFF"/>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13"
+                                     fill="none">
+                                    <path d="M0 5.6875H12.17L6.58 1.14562L8 0L16 6.5L8 13L6.59 11.8544L12.17 7.3125H0V5.6875Z"
+                                          fill="#FFF"/>
                                 </svg>
                             </a>
                         </div>
                         <label class="call-form__agree">
                             <input type="checkbox">
-                            <p>Даю согласие на хранение и обработку персональных данных. <a href="#">Подробнее...</a></p>
+                            <p>Даю согласие на хранение и обработку персональных данных. <a href="#">Подробнее...</a>
+                            </p>
                         </label>
-                        <img src="<?php echo get_template_directory_uri() ?>/assets/img/call-form__bg.png" alt="" class="call-form__bg">
+                        <img src="<?php echo get_template_directory_uri() ?>/assets/img/call-form__bg.png" alt=""
+                             class="call-form__bg">
                     </form>
                 </div>
             </div>
         </section>
-        <svg class="shape-divider" fill="#e1e1e1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300" preserveAspectRatio="none">
+        <svg class="shape-divider" fill="#e1e1e1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 300"
+             preserveAspectRatio="none">
             <path d="M 1014 264 v 122 h -808 l -172 -86 s 310.42 -22.84 402 -79 c 106 -65 154 -61 268 -12 c 107 46 195.11 5.94 275 137 z"></path>
             <path d="M -302 55 s 235.27 208.25 352 159 c 128 -54 233 -98 303 -73 c 92.68 33.1 181.28 115.19 235 108 c 104.9 -14 176.52 -173.06 267 -118 c 85.61 52.09 145 123 145 123 v 74 l -1306 10 z"></path>
             <path d="M -286 255 s 214 -103 338 -129 s 203 29 384 101 c 145.57 57.91 178.7 50.79 272 0 c 79 -43 301 -224 385 -63 c 53 101.63 -62 129 -62 129 l -107 84 l -1212 12 z"></path>
@@ -208,11 +242,14 @@ get_header();
                 <div class="partner-block">
                     <div class="partner-title">Наши партнёры</div>
                     <img src="<?php echo get_template_directory_uri() ?>/assets/img/bqt.png" alt="">
-                    <p class="partner-desc"><span>Онлайн-магазин цветов</span> La Buquette — это профессиональные флористы, создающие  неповторимые и сложные композиции для самых особенных случаев и самых взыскательных клиентов. Есть доставка.</p>
+                    <p class="partner-desc"><span>Онлайн-магазин цветов</span> La Buquette — это профессиональные
+                        флористы, создающие неповторимые и сложные композиции для самых особенных случаев и самых
+                        взыскательных клиентов. Есть доставка.</p>
                     <a href="#" class="partner-btn">
                         На сайт
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="13" viewBox="0 0 16 13" fill="none">
-                            <path d="M0 5.6875H12.17L6.58 1.14562L8 0L16 6.5L8 13L6.59 11.8544L12.17 7.3125H0V5.6875Z" fill="#FFF"></path>
+                            <path d="M0 5.6875H12.17L6.58 1.14562L8 0L16 6.5L8 13L6.59 11.8544L12.17 7.3125H0V5.6875Z"
+                                  fill="#FFF"></path>
                         </svg>
                     </a>
                 </div>
@@ -220,30 +257,55 @@ get_header();
                 <div class="contact-row">
                     <div class="contact-left">
                         <div class="contact-item">
-                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve" id="nectar-svg-animation-instance-0" style="height: 64px; width: 64px;">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px"
+                                 viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"
+                                 id="nectar-svg-animation-instance-0" style="height: 64px; width: 64px;">
                                     <g>
-                                        <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M28,19.001A4,4 0,1,1 36,19.001A4,4 0,1,1 28,19.001" style="stroke-dasharray: 26, 28; stroke-dashoffset: 0;"></path>
-                                        <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M45,21.023C44.968,13.276,39.181,7,32,7		s-13,6.276-13,14.023C19,31.046,31.979,47,31.979,47S45.043,31.046,45,21.023z" style="stroke-dasharray: 102, 104; stroke-dashoffset: 0;"></path>
+                                        <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10"
+                                              d="M28,19.001A4,4 0,1,1 36,19.001A4,4 0,1,1 28,19.001"
+                                              style="stroke-dasharray: 26, 28; stroke-dashoffset: 0;"></path>
+                                        <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10"
+                                              d="M45,21.023C44.968,13.276,39.181,7,32,7		s-13,6.276-13,14.023C19,31.046,31.979,47,31.979,47S45.043,31.046,45,21.023z"
+                                              style="stroke-dasharray: 102, 104; stroke-dashoffset: 0;"></path>
                                     </g>
-                                <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M21,37L12,37L1,57L32,57L63,57L52,37L43,37" style="stroke-dasharray: 126, 128; stroke-dashoffset: 0;"></path>
+                                <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10"
+                                      d="M21,37L12,37L1,57L32,57L63,57L52,37L43,37"
+                                      style="stroke-dasharray: 126, 128; stroke-dashoffset: 0;"></path>
                                 </svg>
                             <div class="contact-item__right">
                                 <div class="contact-title">Адрес</div>
-                                <p class="desc">СПб, Загородный пр., 18/2 (300 м от метро Владимирская, вход с ул. Разъезжая, 2) Время работы: 10:00 — 22:00</p>
+                                <p class="desc">СПб, Загородный пр., 18/2 (300 м от метро Владимирская, вход с ул.
+                                    Разъезжая, 2) Время работы: 10:00 — 22:00</p>
                                 <p class="desc">
-                                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/artwork.svg" alt="">
-                                    Бесплатная парковка на закрытой территории (для пропуска на территорию сообщите нам марку и номер машины за сутки до записи)
+                                    <img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/artwork.svg"
+                                         alt="">
+                                    Бесплатная парковка на закрытой территории (для пропуска на территорию сообщите нам
+                                    марку и номер машины за сутки до записи)
                                 </p>
                             </div>
                         </div>
                         <div class="contact-item">
-                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve" id="nectar-svg-animation-instance-1" style="height: 64px; width: 64px;">
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px"
+                                 viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"
+                                 id="nectar-svg-animation-instance-1" style="height: 64px; width: 64px;">
                                     <g>
-                                        <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" width="32" height="62" d="M16 1 L48 1 L48 63 L16 63 Z" style="stroke-dasharray: 188, 190; stroke-dashoffset: 0;"></path>
-                                        <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M28,5L36,5" style="stroke-dasharray: 8, 10; stroke-dashoffset: 0;"></path>
-                                        <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M16,51L48,51" style="stroke-dasharray: 32, 34; stroke-dashoffset: 0;"></path>
-                                        <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M16,9L48,9" style="stroke-dasharray: 32, 34; stroke-dashoffset: 0;"></path>
-                                        <path fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" d="M30,57A2,2 0,1,1 34,57A2,2 0,1,1 30,57" style="stroke-dasharray: 13, 15; stroke-dashoffset: 0;"></path>
+                                        <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10"
+                                              width="32" height="62" d="M16 1 L48 1 L48 63 L16 63 Z"
+                                              style="stroke-dasharray: 188, 190; stroke-dashoffset: 0;"></path>
+                                        <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10"
+                                              d="M28,5L36,5"
+                                              style="stroke-dasharray: 8, 10; stroke-dashoffset: 0;"></path>
+                                        <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10"
+                                              d="M16,51L48,51"
+                                              style="stroke-dasharray: 32, 34; stroke-dashoffset: 0;"></path>
+                                        <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10"
+                                              d="M16,9L48,9"
+                                              style="stroke-dasharray: 32, 34; stroke-dashoffset: 0;"></path>
+                                        <path fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="bevel"
+                                              stroke-miterlimit="10" d="M30,57A2,2 0,1,1 34,57A2,2 0,1,1 30,57"
+                                              style="stroke-dasharray: 13, 15; stroke-dashoffset: 0;"></path>
                                     </g>
                                 </svg>
                             <div class="contact-item__right">
@@ -253,12 +315,23 @@ get_header();
                             </div>
                         </div>
                         <div class="contact-item">
-                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px" viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve" id="nectar-svg-animation-instance-2" style="height: 64px; width: 64px;">
-                                    <path fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="bevel" stroke-miterlimit="10" d="M23,20L30,27L	43,14" style="stroke-dasharray: 29, 31; stroke-dashoffset: 0;"></path>
+                            <svg version="1.1" xmlns="http://www.w3.org/2000/svg"
+                                 xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="64px" height="64px"
+                                 viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve"
+                                 id="nectar-svg-animation-instance-2" style="height: 64px; width: 64px;">
+                                    <path fill="none" stroke="#000000" stroke-width="2" stroke-linejoin="bevel"
+                                          stroke-miterlimit="10" d="M23,20L30,27L	43,14"
+                                          style="stroke-dasharray: 29, 31; stroke-dashoffset: 0;"></path>
                                 <g>
-                                    <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M1,26L32,45.434L63,26" style="stroke-dasharray: 74, 76; stroke-dashoffset: 0;"></path>
-                                    <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M11.333,21.667L1,26L1,63L63,63L63,26L		63,26L52.667,21.667" style="stroke-dasharray: 159, 161; stroke-dashoffset: 0;"></path>
-                                    <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10" d="M11,32L11,1L53,1L53,32" style="stroke-dasharray: 104, 106; stroke-dashoffset: 0;"></path>
+                                    <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10"
+                                          d="M1,26L32,45.434L63,26"
+                                          style="stroke-dasharray: 74, 76; stroke-dashoffset: 0;"></path>
+                                    <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10"
+                                          d="M11.333,21.667L1,26L1,63L63,63L63,26L		63,26L52.667,21.667"
+                                          style="stroke-dasharray: 159, 161; stroke-dashoffset: 0;"></path>
+                                    <path fill="none" stroke="#000000" stroke-width="2" stroke-miterlimit="10"
+                                          d="M11,32L11,1L53,1L53,32"
+                                          style="stroke-dasharray: 104, 106; stroke-dashoffset: 0;"></path>
                                 </g>
                                 </svg>
                             <div class="contact-item__right">
@@ -268,13 +341,16 @@ get_header();
                         </div>
                         <a href="#" class="contact-btn">
                             Записаться
-                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
-                                <path d="M15.74 3.59283C16.0867 3.24622 16.0867 2.66852 15.74 2.33968L13.6603 0.259964C13.3315 -0.0866546 12.7538 -0.0866546 12.4072 0.259964L10.7718 1.8864L14.1047 5.21927L15.74 3.59283ZM0 12.6671V16H3.33287L13.1626 6.16137L9.82975 2.8285L0 12.6671Z" fill="white"/>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
+                                 fill="none">
+                                <path d="M15.74 3.59283C16.0867 3.24622 16.0867 2.66852 15.74 2.33968L13.6603 0.259964C13.3315 -0.0866546 12.7538 -0.0866546 12.4072 0.259964L10.7718 1.8864L14.1047 5.21927L15.74 3.59283ZM0 12.6671V16H3.33287L13.1626 6.16137L9.82975 2.8285L0 12.6671Z"
+                                      fill="white"/>
                             </svg>
                         </a>
                     </div>
                     <div class="contact-ratings">
-                        <img src="<?php echo get_template_directory_uri() ?>/assets/img/ya-rating.png" alt="" class="ya-rating">
+                        <img src="<?php echo get_template_directory_uri() ?>/assets/img/ya-rating.png" alt=""
+                             class="ya-rating">
                         <div class="other-ratings">
                             <a href="#">
                                 <img src="<?php echo get_template_directory_uri() ?>/assets/img/icons/2gis.png" alt="">
@@ -289,11 +365,18 @@ get_header();
                 </div>
                 <div class="payment_terms">
                     <div class="payment-title">Обращаем Ваше внимание на информированное согласие на предоплату</div>
-                    <p class="desc">Все записи на услуги длительностью более 1 часа осуществляются по предоплате. Это позволяет нам эффективнее планировать рабочий график и избегать недоразумений. При отмене записи в день визита более двух раз подряд дальнейшая запись возможна только по полной предоплате путём внесения депозита, который равен сумме забронированной услуги. Внесённый депозит при оказании услуги зачитывается в стоимость оказанной услуги. В случае отмены записи в день визита депозит не возвращается.</p>
+                    <p class="desc">Все записи на услуги длительностью более 1 часа осуществляются по предоплате. Это
+                        позволяет нам эффективнее планировать рабочий график и избегать недоразумений. При отмене записи
+                        в день визита более двух раз подряд дальнейшая запись возможна только по полной предоплате путём
+                        внесения депозита, который равен сумме забронированной услуги. Внесённый депозит при оказании
+                        услуги зачитывается в стоимость оказанной услуги. В случае отмены записи в день визита депозит
+                        не возвращается.</p>
                     <a href="#" class="payment-btn">
                         ПОДРОБНЕЕ
                         <svg xmlns="http://www.w3.org/2000/svg" width="13" height="10" viewBox="0 0 13 10" fill="none">
-                            <path fill-rule="evenodd" clip-rule="evenodd" d="M6.17496 4.60711L4.687 2.97778H4.68538C4.59305 2.87677 4.5782 2.74163 4.64702 2.6287C4.71583 2.51578 4.8565 2.44444 5.01038 2.44444H5.55204C5.62683 2.44444 5.68746 2.3947 5.68746 2.33333V0.666666C5.68746 0.298477 6.05123 0 6.49996 0C6.94869 0 7.31246 0.298477 7.31246 0.666666V2.33333C7.31246 2.36303 7.32695 2.3915 7.3527 2.41237C7.37844 2.43325 7.41331 2.4448 7.4495 2.44444H7.99117C8.14523 2.4441 8.28623 2.51539 8.35513 2.62846C8.42403 2.74152 8.40894 2.87685 8.31617 2.97778L6.82496 4.60711C6.74824 4.69104 6.62783 4.74044 6.49996 4.74044C6.37209 4.74044 6.25168 4.69104 6.17496 4.60711ZM11.3306 4.01146L12.9372 6.45591C12.9754 6.52189 12.9967 6.59358 13 6.66657V9.33324C13 9.70143 12.6362 9.9999 12.1875 9.9999H0.8125C0.363769 9.9999 0 9.70143 0 9.33324V6.66657C0.00624283 6.5935 0.0286351 6.52196 0.0660833 6.45546L1.65858 4.01102C1.83507 3.73339 2.18373 3.55823 2.56533 3.55546H3.52083C3.81999 3.55546 4.0625 3.75445 4.0625 3.99991C4.0625 4.24537 3.81999 4.44435 3.52083 4.44435H2.6455C2.59522 4.44443 2.54912 4.46736 2.52579 4.50391L1.39696 6.28168C1.37499 6.3161 1.37652 6.35742 1.40099 6.39067C1.42546 6.42393 1.46932 6.44428 1.51667 6.44435H3.52083C3.96956 6.44435 4.33333 6.74283 4.33333 7.11102C4.33333 7.47921 4.6971 7.77768 5.14583 7.77768H7.85417C8.3029 7.77768 8.66667 7.47921 8.66667 7.11102C8.66667 6.93421 8.75227 6.76464 8.90464 6.63961C9.05702 6.51459 9.26368 6.44435 9.47917 6.44435H11.4714C11.5191 6.44437 11.5634 6.42378 11.5878 6.39014C11.6122 6.3565 11.6133 6.31479 11.5906 6.28035L10.4157 4.50257C10.392 4.46668 10.3463 4.44433 10.2965 4.44435H9.20833C8.90918 4.44435 8.66667 4.24537 8.66667 3.99991C8.66667 3.75445 8.90918 3.55546 9.20833 3.55546H10.4217C10.8039 3.55835 11.1532 3.73359 11.3306 4.01146Z" fill="white"/>
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                  d="M6.17496 4.60711L4.687 2.97778H4.68538C4.59305 2.87677 4.5782 2.74163 4.64702 2.6287C4.71583 2.51578 4.8565 2.44444 5.01038 2.44444H5.55204C5.62683 2.44444 5.68746 2.3947 5.68746 2.33333V0.666666C5.68746 0.298477 6.05123 0 6.49996 0C6.94869 0 7.31246 0.298477 7.31246 0.666666V2.33333C7.31246 2.36303 7.32695 2.3915 7.3527 2.41237C7.37844 2.43325 7.41331 2.4448 7.4495 2.44444H7.99117C8.14523 2.4441 8.28623 2.51539 8.35513 2.62846C8.42403 2.74152 8.40894 2.87685 8.31617 2.97778L6.82496 4.60711C6.74824 4.69104 6.62783 4.74044 6.49996 4.74044C6.37209 4.74044 6.25168 4.69104 6.17496 4.60711ZM11.3306 4.01146L12.9372 6.45591C12.9754 6.52189 12.9967 6.59358 13 6.66657V9.33324C13 9.70143 12.6362 9.9999 12.1875 9.9999H0.8125C0.363769 9.9999 0 9.70143 0 9.33324V6.66657C0.00624283 6.5935 0.0286351 6.52196 0.0660833 6.45546L1.65858 4.01102C1.83507 3.73339 2.18373 3.55823 2.56533 3.55546H3.52083C3.81999 3.55546 4.0625 3.75445 4.0625 3.99991C4.0625 4.24537 3.81999 4.44435 3.52083 4.44435H2.6455C2.59522 4.44443 2.54912 4.46736 2.52579 4.50391L1.39696 6.28168C1.37499 6.3161 1.37652 6.35742 1.40099 6.39067C1.42546 6.42393 1.46932 6.44428 1.51667 6.44435H3.52083C3.96956 6.44435 4.33333 6.74283 4.33333 7.11102C4.33333 7.47921 4.6971 7.77768 5.14583 7.77768H7.85417C8.3029 7.77768 8.66667 7.47921 8.66667 7.11102C8.66667 6.93421 8.75227 6.76464 8.90464 6.63961C9.05702 6.51459 9.26368 6.44435 9.47917 6.44435H11.4714C11.5191 6.44437 11.5634 6.42378 11.5878 6.39014C11.6122 6.3565 11.6133 6.31479 11.5906 6.28035L10.4157 4.50257C10.392 4.46668 10.3463 4.44433 10.2965 4.44435H9.20833C8.90918 4.44435 8.66667 4.24537 8.66667 3.99991C8.66667 3.75445 8.90918 3.55546 9.20833 3.55546H10.4217C10.8039 3.55835 11.1532 3.73359 11.3306 4.01146Z"
+                                  fill="white"/>
                         </svg>
                     </a>
                 </div>

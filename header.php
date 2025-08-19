@@ -33,9 +33,9 @@
                 </a>
                 <div class="header_right">
                     <ul class="header_links">
-                        <li class="link-item__parent"><a href="#" class="link-item is-active">Главная</a></li>
-                        <li class="link-item__parent"><a href="#" class="link-item">Цены</a></li>
-                        <li class="link-item__parent"><a href="#" class="link-item">Акции</a></li>
+                        <li class="link-item__parent"><a href="<?php echo home_url(); ?>" class="link-item is-active">Главная</a></li>
+                        <li class="link-item__parent"><a href="/ceny" class="link-item">Цены</a></li>
+                        <li class="link-item__parent"><a href="/discounts" class="link-item">Акции</a></li>
                         <li class="link-item__parent has-menu">
                             <a href="#" class="link-item">О нас</a>
                             <span class="link-item__arr">
