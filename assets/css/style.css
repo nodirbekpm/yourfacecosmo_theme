@@ -64,6 +64,9 @@ body{
     }
 }
 
+.wpcf7-response-output{
+	display: none !important;
+}
 
 /* HEADER */
 header{
@@ -313,6 +316,13 @@ header + *{
     color: var(--white);
     background-color: var(--gray2);
 }
+.about-menu a:hover::after, .about-menu a.active::after{
+    content: none;
+}
+.about-menu a.active{
+    color: var(--white);
+    background-color: var(--gray2);
+}
 .menu-service{
     display: flex;
     flex-wrap: wrap;
@@ -336,6 +346,9 @@ header + *{
     border-radius: 5px;
 }
 .service-inner:hover{
+    background-color: rgba(0, 0, 0, .05);
+}
+.service-inner.active{
     background-color: rgba(0, 0, 0, .05);
 }
 .service-title{
@@ -373,7 +386,7 @@ header + *{
     border-radius: 50%;
     background-color: #c3ab7a;
 }
-.service-option a{
+.service-option a, .service-option span{
     font-size: 17px;
     font-weight: 300;
     line-height: normal;

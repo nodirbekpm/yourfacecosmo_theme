@@ -29,6 +29,7 @@ function yourface_register_services_cpt() {
         'supports'           => array('title', 'editor', 'thumbnail', 'excerpt', 'page-attributes'),
         'rewrite'            => array('slug' => 'services'),
         'show_in_rest'       => true,
+		'hierarchical' => true,
     );
 
     register_post_type('services', $args);
